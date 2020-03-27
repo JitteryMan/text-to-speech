@@ -1,0 +1,9 @@
+.idea/
+venv/
+__pycache__
+migrations/
+*.sqlite
+*.mo
+*.po
+#*.psd
+#keys.py

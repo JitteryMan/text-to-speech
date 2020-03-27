@@ -1,0 +1,27 @@
+{% extends 'SpeechIT/template.html' %}
+
+{% load static %}
+
+{% block url_info %}
+{{ path }}
+{% endblock %}
+
+{% block title %}
+Text to Speech - Homepage
+{% endblock %}
+
+{% block content %}
+<img src="{% static 'SpeechIT/img/cloud.png' %}" alt="img">
+
+    <form method="post" action="{% url 'SpeechIT:to_speech' "spoken" %}">
+    {% csrf_token %}
+    <select name="lang">
+        <option value="ru" selected>RU</option>
+        <option value="en">EN</option>
+    </select>
+    <textarea name="qtext" required placeholder="write text..."></textarea>
+    <blockquote>enter text</blockquote>
+    <button type="submit">POST</button>
+    </form>
+
+{% endblock %}
