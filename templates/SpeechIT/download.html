@@ -1,8 +1,15 @@
 {% extends 'SpeechIT/template.html' %}
 
 {% block content %}
-{{ text }}
+{{ db.text }}
+{{ db.date }}
+{{ db.lang }}
+{{ db.hash_str }}
+{{ db.ip }}
+    <audio src="{{ media }}" controls>
+    Not work!
+    </audio>
+
     <hr>
-    {{ ip }}<br>
-    {{ ip2 }}
+    <a href="/">Home</a>
 {% endblock %}

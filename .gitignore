@@ -2,8 +2,9 @@
 venv/
 __pycache__
 migrations/
-*.sqlite
+*.sqlite3
 *.mo
 *.po
+*.mp3
 #*.psd
 #keys.py
