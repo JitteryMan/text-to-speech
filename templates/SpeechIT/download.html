@@ -1,15 +1,30 @@
 {% extends 'SpeechIT/template.html' %}
 
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "We save audio message for you" %}
+{% endblock %}
+
+{% block url_info %}
+{% trans "We save audio message for you" %}
+{% endblock %}
+
+
 {% block content %}
-{{ db.text }}
-{{ db.date }}
-{{ db.lang }}
-{{ db.hash_str }}
-{{ db.ip }}
+    <a href="/" title="{% trans "Back to HomePage" %}"><img src="{% static "SpeechIT/img/back.png" %}" alt="{% trans "back" %}"> </a>
+    <div class="content">
     <audio src="{{ media }}" controls>
-    Not work!
+    {% trans "Tag audio not work in your browser" %}
     </audio>
 
+
+
     <hr>
-    <a href="/">Home</a>
+    <h2>{% trans "Share" %}</h2>
+    <a href="https://telegram.me/share/url?url={{ request.build_absolute_uri }}&text={{ db.text }}"><img src="{% static 'SpeechIT/img/telegram.png' %}" class="social"></a>
+    <a href="viber://forward?text={{ request.build_absolute_uri }}"><img src="{% static 'SpeechIT/img/viber.png' %}" class="social"></a>
+    <a href="https://vk.com/share.php?url={{ request.build_absolute_uri }}&text={{ db.text }}" target="_blank"><img src="{% static 'SpeechIT/img/vk.png' %}" class="social"></a>
+</div>
 {% endblock %}

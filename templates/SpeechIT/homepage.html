@@ -1,27 +1,43 @@
 {% extends 'SpeechIT/template.html' %}
 
 {% load static %}
+{% load i18n %}
 
 {% block url_info %}
-{{ path }}
+    {{ path }}
 {% endblock %}
 
 {% block title %}
-Text to Speech - Homepage
+    {% trans "Text to Speech - Homepage" %}
 {% endblock %}
 
 {% block content %}
-<img src="{% static 'SpeechIT/img/cloud.png' %}" alt="img">
+    <div class="content">
+        <a href="/"><img src="{% static 'SpeechIT/img/cloud.png' %}" alt="img"></a>
 
-    <form method="post" action="{% url 'SpeechIT:to_speech' "spoken" %}">
-    {% csrf_token %}
-    <select name="lang">
-        <option value="ru" selected>RU</option>
-        <option value="en">EN</option>
-    </select>
-    <textarea name="qtext" required placeholder="write text..."></textarea>
-    <blockquote>enter text</blockquote>
-    <button type="submit">POST</button>
-    </form>
+            <form method="post" action="{% url 'SpeechIT:to_speech' %}">
+                {% csrf_token %}
+                <select name="lang" class="obj-content">
+                    <option value="en" selected>English</option>
+                    <option value="ru">Русский</option>
+                    <option value="be">Беларуская</option>
+                    <option value="uk">Українська</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="es">Español</option>
+                    <option value="zh">中文</option>
+                </select>
+                <textarea class="obj-content" name="qtext" required placeholder="{% trans "Write text here..." %}" id="memo"></textarea>
+                <div id="count">{% trans "Symbols count: " %}0</div>
+                <button type="submit" class="button">{% trans "Convert IT" %}</button>
+            </form>
+        </div>
+
+<script>
+memo.oninput = memo.onkeyp = memo.onchange = function(){
+    var len = this.value.length;
+    document.getElementById('count').innerText = "{% trans 'Symbols count: ' %}" + len;
+}
+</script>
 
 {% endblock %}
