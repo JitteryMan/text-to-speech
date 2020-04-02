@@ -45,7 +45,7 @@ def index(request):
 def to_speech(request):
     text_data = request.POST['qtext']
     text_lang = request.POST['lang']
-    hash_digit = get_hash(text_data)
+    hash_digit = get_hash(text_data+text_lang)
     ip = get_ip(request)
     Post.objects.update_or_create(hash_str=hash_digit, defaults={'text': text_data, 'lang': text_lang,
                                                                  'ip': ip, 'date': timezone.now(),

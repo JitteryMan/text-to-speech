@@ -4,27 +4,32 @@
 {% load i18n %}
 
 {% block title %}
-{% trans "We save audio message for you" %}
+    {% trans "We save audio message for you" %}
 {% endblock %}
 
 {% block url_info %}
-{% trans "We save audio message for you" %}
+    {% trans "We save audio message for you" %}
 {% endblock %}
 
 
 {% block content %}
-    <a href="/" title="{% trans "Back to HomePage" %}"><img src="{% static "SpeechIT/img/back.png" %}" alt="{% trans "back" %}"> </a>
+    <a href="/" title="{% trans "Back to HomePage" %}"><img src="{% static "SpeechIT/img/back.png" %}"
+                                                            alt="{% trans "back" %}"> </a>
     <div class="content">
-    <audio src="{{ media }}" controls>
-    {% trans "Tag audio not work in your browser" %}
-    </audio>
+        <audio src="{{ media }}" controls>
+            {% trans "Tag audio not work in your browser" %}
+        </audio>
 
 
-
-    <hr>
-    <h2>{% trans "Share" %}</h2>
-    <a href="https://telegram.me/share/url?url={{ request.build_absolute_uri }}&text={{ db.text }}"><img src="{% static 'SpeechIT/img/telegram.png' %}" class="social"></a>
-    <a href="viber://forward?text={{ request.build_absolute_uri }}"><img src="{% static 'SpeechIT/img/viber.png' %}" class="social"></a>
-    <a href="https://vk.com/share.php?url={{ request.build_absolute_uri }}&text={{ db.text }}" target="_blank"><img src="{% static 'SpeechIT/img/vk.png' %}" class="social"></a>
-</div>
+        <hr>
+        <h3>{% trans "This audio record will be available within 5 hours" %}</h3>
+        <hr>
+        <h2>{% trans "Share" %}</h2>
+        <a href="https://telegram.me/share/url?url={{ request.build_absolute_uri }}"><img
+                src="{% static 'SpeechIT/img/telegram.png' %}" class="social"></a>
+        <a href="viber://forward?text={{ request.build_absolute_uri }}"><img src="{% static 'SpeechIT/img/viber.png' %}"
+                                                                             class="social"></a>
+        <a href="https://vk.com/share.php?url={{ request.build_absolute_uri }}" target="_blank"><img
+                src="{% static 'SpeechIT/img/vk.png' %}" class="social"></a>
+    </div>
 {% endblock %}

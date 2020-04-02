@@ -17,7 +17,7 @@ class Post(models.Model):
         return self.text
 
     def need_delete(self):
-        return self.date <= timezone.now() - timedelta(days=1)
+        return self.date <= timezone.now() - timedelta(hours=5)
 
     class Meta:
         verbose_name = 'Text'
